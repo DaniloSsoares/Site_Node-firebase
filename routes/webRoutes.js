@@ -1,32 +1,39 @@
 const express = require('express');
 const router = express.Router();
-const post = require('../models/post');
+const db = require('../config/firebaseConfig');
 
    router.get('/', (req, res) => {
     res.render('home');
      });
 
-     router.get('/consulta', (req, res) => {});
+     router.get('/consulta', (req, res) => {
+        res.render('Consulta/consulta');
+     });
 
-     router.get("/editar/:id", function(req, res){})
+     router.get("/editar/:id", function(req, res){
+        res.render('Editar/editar');
+     })
 
-     router.get('/excluir/:id', function(req, res){})
+     router.get('/excluir/:id', function(req, res){
+        
+     })
 
-     router.get('/cadastro', (req, res) => {});
+     router.get('/cadastro', (req, res) => {
+        res.render('Cadastro/cadastro');
+     });
 
      router.post('/cadastro', function(req, res){
-        post.create({
-            nome:req.body.nome,
-            email:req.body.email,
-            telefone:req.body.telefone,
-            data_contato:req.body.data_contato,
-            observacao:req.body.observacao,
-            origem:req.body.origem
-           }).then(function(){
-         res.send("Dados enviados com sucesso!")
-        }).catch(function(erro){
-         res.send("Erro ao enviar dados: "+erro)
-        })
+       db.collection('agendamentos').add({
+             nome:req.body.nome,
+             email:req.body.email,
+             telefone:req.body.telefone,
+             data_contato:req.body.data_contato,
+             observacao:req.body.observacao,
+             origem:req.body.origem
+       }).then(function(){
+        console.log('Cadastrado');
+         res.redirect('/');
+       })
      });
 
 
