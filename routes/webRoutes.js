@@ -24,7 +24,7 @@ const db = require('../config/firebaseConfig');
             
      router.get("/editar/:id", function(req, res){
           db.collection("agendamentos").doc(req.params.id).get().then((doc)=>{
-            res.render('/consulta', { post: {id: doc.id, ...doc.data() }});
+            res.render('Editar/editar', { post: {id: doc.id, ...doc.data() }});
           })
             })
    
@@ -66,10 +66,7 @@ const db = require('../config/firebaseConfig');
           }).then(function(){
             console.log('Documento atualizado com sucesso');
               res.redirect('/consulta');
-            }).catch(function(error){
-             console.error('Erro ao atualizar o documento:', error);
-           res.status(500).send('Erro ao atualizar o documento: ' + error.message);
-         });
+            })
        });
 
 module.exports = router;
