@@ -37,7 +37,16 @@ const db = require('../config/firebaseConfig');
        })
 
      router.get('/cadastro', (req, res) => {
-        res.render('Cadastro/cadastro');
+      
+      db.collection("agendamentos").get().then((snapshot)=>{
+         const posts = snapshot.docs.map(doc =>{
+            return{
+               id: doc.id,
+               ...doc.data()
+            }
+         })
+        res.render('Cadastro/cadastro', {posts:posts});
+        })
      });
 
      router.post('/cadastro', function(req, res){

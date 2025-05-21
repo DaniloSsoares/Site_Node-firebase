@@ -5,6 +5,8 @@ const handlebars = require("express-handlebars").engine;
 const webRoutes = require("./routes/webRoutes");
 const bodyParser = require("body-parser");
 
+app.use(express.static('public'));
+
 app.engine("handlebars", handlebars({defaultLayout: "main"}))
 app.set("view engine", "handlebars");
 
