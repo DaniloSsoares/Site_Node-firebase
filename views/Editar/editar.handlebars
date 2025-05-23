@@ -56,10 +56,15 @@
       <input type="date" name="data_contato" value="{{post.data_contato}}" id="data_contato" class="w-full px-3 py-2 border rounded-lg shadow-sm focus:ring focus:ring-blue-200">
     </div>
 
-   <div>
-    <label for="origem" class="block text-sm font-medium text-gray-700">Origem</label>
-     <input type="text" name="origem" value="{{post.origem}}" id="origem" class="w-full px-3 py-2 border rounded-lg shadow-sm focus:ring focus:ring-blue-200">
-   </div>
+    <div>
+      <label for="origem" class="block text-sm font-medium text-gray-700">Origem</label>
+      <select name="origem" value="{{post.origem}}"  id="origem" class="w-full px-3 py-2 border rounded-lg shadow-sm focus:ring focus:ring-blue-200">
+        <option selected>Celular</option>
+        <option value="Fixo">Fixo</option>
+        <option value="Telefone">Telefone</option>
+        <option value="Outros">Outros</option>
+      </select>
+    </div>
 
 
     <div>
